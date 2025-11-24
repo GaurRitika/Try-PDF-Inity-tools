@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import { toast } from "sonner";
 import { Loader2, Download } from "lucide-react";
+import Navigation from "@/components/Navigation";
 import HeroSection from "@/components/HeroSection";
 import FileUpload from "@/components/FileUpload";
 import FileList from "@/components/FileList";
@@ -64,7 +65,8 @@ const Index = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col">
+      <Navigation />
       <input
         ref={fileInputRef}
         type="file"
@@ -80,7 +82,7 @@ const Index = () => {
 
       <HeroSection onFileSelect={handleFileSelect} />
 
-      <main className="py-16 px-4 sm:px-6 lg:px-8">
+      <main className="flex-1 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <FileUpload onFilesSelected={handleFilesSelected} hasFiles={files.length > 0} />
 
