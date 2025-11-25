@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FileUp, FileDown, Home } from "lucide-react";
+import { FileUp, FileDown, Home, Scissors } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
@@ -53,6 +53,19 @@ const Navigation = () => {
               <span className="flex items-center gap-2">
                 <FileDown className="w-4 h-4" />
                 <span className="hidden md:inline">Compress</span>
+              </span>
+            </Link>
+            <Link
+              to="/split-pdf"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-base ${
+                location.pathname === "/split-pdf" 
+                  ? "bg-primary text-primary-foreground shadow-sm" 
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Scissors className="w-4 h-4" />
+                <span className="hidden md:inline">Split</span>
               </span>
             </Link>
           </div>

@@ -22,8 +22,7 @@ const Index = () => {
       icon: Scissors,
       title: "Split PDF",
       description: "Extract pages or split PDF into multiple files",
-      route: "/split-pdf",
-      comingSoon: true
+      route: "/split-pdf"
     },
     {
       icon: FileImage,
