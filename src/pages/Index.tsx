@@ -38,10 +38,9 @@ const Index = () => {
     },
     {
       icon: FileImage,
-      title: "PDF to Image",
-      description: "Convert PDF pages to JPG or PNG images",
-      route: "/pdf-to-image",
-      comingSoon: true
+      title: "PDF to JPG",
+      description: "Convert PDF pages to high-quality JPG images",
+      route: "/pdf-to-jpg"
     },
     {
       icon: Lock,

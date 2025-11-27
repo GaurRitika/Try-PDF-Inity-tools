@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FileUp, FileDown, Home, Scissors, FileText } from "lucide-react";
+import { FileUp, FileDown, Home, Scissors, FileText, Image } from "lucide-react";
 
 const Navigation = () => {
   const location = useLocation();
@@ -92,6 +92,19 @@ const Navigation = () => {
               <span className="flex items-center gap-2">
                 <FileText className="w-4 h-4" />
                 <span className="hidden md:inline">To PDF</span>
+              </span>
+            </Link>
+            <Link
+              to="/pdf-to-jpg"
+              className={`px-3 py-2 rounded-lg text-sm font-medium transition-base ${
+                location.pathname === "/pdf-to-jpg" 
+                  ? "bg-primary text-primary-foreground shadow-sm" 
+                  : "text-muted-foreground hover:text-foreground hover:bg-accent"
+              }`}
+            >
+              <span className="flex items-center gap-2">
+                <Image className="w-4 h-4" />
+                <span className="hidden md:inline">To JPG</span>
               </span>
             </Link>
           </div>
