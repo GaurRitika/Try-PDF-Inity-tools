@@ -4,15 +4,19 @@ Yeah , also if u can find any bugs , most welcome.
 
 Hey Guys , features are:
 
-1.PDF Merge
+1.PDF Merge : https://pixel-pdf-joiner.vercel.app/merge-pdf
 
-2.PDF Split
+2.PDF Split : https://pixel-pdf-joiner.vercel.app/split-pdf
 
-3.PDF Compressor
+3.PDF Compressorv : https://pixel-pdf-joiner.vercel.app/compress-pdf
 
-4.PDF to Word
+4.PDF to Word :  https://pixel-pdf-joiner.vercel.app/pdf-to-word
 
-5.Word to PDF
+5.Word to PDF : https://pixel-pdf-joiner.vercel.app/word-to-pdf
+
+6.Pdf to JPG : https://pixel-pdf-joiner.vercel.app/pdf-to-jpg
+
+7.JPG to PDF : https://pixel-pdf-joiner.vercel.app/jpg-to-pdf
 
 U can email me :
 devritika.gaur@gmail.com
