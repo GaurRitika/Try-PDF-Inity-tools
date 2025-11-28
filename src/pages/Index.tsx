@@ -43,6 +43,12 @@ const Index = () => {
       route: "/pdf-to-jpg"
     },
     {
+      icon: FileImage,
+      title: "JPG to PDF",
+      description: "Convert JPG, PNG images to PDF documents",
+      route: "/jpg-to-pdf"
+    },
+    {
       icon: Lock,
       title: "Protect PDF",
       description: "Add password protection to your PDF files",
