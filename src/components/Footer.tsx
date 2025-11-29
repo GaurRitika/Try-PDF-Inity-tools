@@ -12,6 +12,7 @@ const Footer = () => {
     { to: "/word-to-pdf", label: "Word to PDF" },
     { to: "/pdf-to-jpg", label: "PDF to JPG" },
     { to: "/jpg-to-pdf", label: "JPG to PDF" },
+    { to: "/compress-image", label: "Image Compressor" },
   ];
 
   const popularSearches = [

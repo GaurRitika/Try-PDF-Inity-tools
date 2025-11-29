@@ -10,8 +10,8 @@ const Navigation = () => {
     { to: "/compress-pdf", icon: FileDown, label: "Compress", short: "Compress" },
     { to: "/split-pdf", icon: Scissors, label: "Split", short: "Split" },
     { to: "/pdf-to-word", icon: FileText, label: "To Word", short: "Word" },
-    { to: "/word-to-pdf", icon: FileText, label: "To PDF", short: "PDF" },
     { to: "/pdf-to-jpg", icon: Image, label: "To JPG", short: "JPG" },
+    { to: "/compress-image", icon: Image, label: "Img Compress", short: "Img" },
   ];
 
   return (

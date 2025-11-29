@@ -11,6 +11,7 @@ import PdfToWord from "./pages/PdfToWord";
 import WordToPdf from "./pages/WordToPdf";
 import PdfToJpg from "./pages/PdfToJpg";
 import JpgToPdf from "./pages/JpgToPdf";
+import ImageCompressor from "./pages/ImageCompressor";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
           <Route path="/word-to-pdf" element={<WordToPdf />} />
           <Route path="/pdf-to-jpg" element={<PdfToJpg />} />
           <Route path="/jpg-to-pdf" element={<JpgToPdf />} />
+          <Route path="/compress-image" element={<ImageCompressor />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
