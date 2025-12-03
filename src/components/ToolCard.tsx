@@ -12,19 +12,8 @@ const ToolCard = ({ icon: Icon, title, description, route }: ToolCardProps) => {
   return (
     <Link
       to={route}
-      className="group relative glass-card rounded-3xl p-6 hover-lift glow-ring overflow-hidden"
+      className="group relative bg-card border border-border/50 rounded-2xl p-6 hover:border-primary/30 hover:shadow-lg transition-all duration-300"
     >
-      {/* Animated Background Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 opacity-0 group-hover:opacity-100 transition-all duration-500" />
-      
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 dot-pattern opacity-30" />
-      
-      {/* Top Highlight Line */}
-      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500" />
-      
-      {/* Shine Effect */}
-      <div className="absolute inset-0 shine" />
       
       <div className="relative flex flex-col items-center text-center">
         {/* 3D Icon Container */}
