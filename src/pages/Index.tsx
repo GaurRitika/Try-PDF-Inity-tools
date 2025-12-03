@@ -1,5 +1,5 @@
 import { Helmet } from "react-helmet";
-import { FileUp, FileDown, Scissors, FileText, FileImage, Lock, RotateCw, Shield, Zap, Sparkles, Check, Eraser } from "lucide-react";
+import { FileUp, FileDown, Scissors, FileText, FileImage, Lock, RotateCw, Shield, Zap, Sparkles, Check, Eraser, ArrowRight, Star } from "lucide-react";
 import Navigation from "@/components/Navigation";
 import ToolCard from "@/components/ToolCard";
 import Footer from "@/components/Footer";
