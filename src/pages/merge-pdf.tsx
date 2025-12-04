@@ -76,7 +76,7 @@ const MergePDF = () => {
         <meta property="og:title" content="Merge PDF Files Online – Free & Fast | No Signup" />
         <meta property="og:description" content="Merge multiple PDF files into one instantly. Free online PDF merger with no watermark, no signup, and secure processing." />
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://yoursite.com/merge-pdf" />
+        <meta property="og:url" content="https://pdf-tools-pied.vercel.app/merge-pdf" />
         
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
