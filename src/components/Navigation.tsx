@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { FileUp, FileDown, Home, Scissors, FileText, Image, Sparkles, Eraser, Menu, X } from "lucide-react";
+import { FileUp, FileDown, Home, Scissors, FileText, Image, Sparkles, Eraser, Menu, X, Edit3 } from "lucide-react";
 import { useState } from "react";
 
 const Navigation = () => {
@@ -11,6 +11,7 @@ const Navigation = () => {
     { to: "/merge-pdf", icon: FileUp, label: "Merge" },
     { to: "/compress-pdf", icon: FileDown, label: "Compress" },
     { to: "/split-pdf", icon: Scissors, label: "Split" },
+    { to: "/pdf-editor", icon: Edit3, label: "Editor" },
     { to: "/pdf-to-jpg", icon: Image, label: "To JPG" },
     { to: "/compress-image", icon: Image, label: "Image" },
     { to: "/remove-background", icon: Eraser, label: "BG Remove" },
