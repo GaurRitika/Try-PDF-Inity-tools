@@ -34,7 +34,7 @@ const Navigation = () => {
                   </div>
                   <div className="flex flex-col">
                     <span className="font-display font-bold text-lg text-foreground leading-tight">
-                      PDF Tools
+                      PDFinity
                     </span>
                     <span className="text-[10px] text-muted-foreground font-medium tracking-wider uppercase">
                       Pro • Free Forever
