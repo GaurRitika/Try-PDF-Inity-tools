@@ -65,7 +65,8 @@ export interface ExtractedTextItem {
   id: string;
   text: string;
   x: number;
-  y: number;
+  y: number; // Canvas Y coordinate (for overlay positioning)
+  pdfY?: number; // Original PDF Y coordinate (for saving)
   width: number;
   height: number;
   fontSize: number;
@@ -199,13 +200,15 @@ export const extractTextFromPage = async (
       // Transform array: [scaleX, skewX, skewY, scaleY, translateX, translateY]
       const fontSize = Math.sqrt(tx[0] * tx[0] + tx[1] * tx[1]);
       const x = tx[4];
-      const y = viewport.height - tx[5]; // Convert to canvas coordinates
+      const canvasY = viewport.height - tx[5]; // For canvas overlay positioning
+      const pdfY = tx[5]; // Original PDF Y coordinate for saving
       
       textItems.push({
         id: generateId(),
         text: item.str,
         x,
-        y,
+        y: canvasY,
+        pdfY, // Store original PDF Y for accurate saving
         width: item.width || fontSize * item.str.length * 0.6,
         height: fontSize * 1.2,
         fontSize,
@@ -280,19 +283,23 @@ export const applyAnnotationsAndSave = async (
       const page = pdfDoc.getPage(textItem.pageIndex);
       const { height: pageHeight } = page.getSize();
       
+      // Use pdfY if available, otherwise calculate from canvas Y
+      const originalPdfY = textItem.pdfY !== undefined ? textItem.pdfY : (pageHeight - textItem.y);
+      
       // Cover original text with white rectangle
+      // Position the rectangle at the baseline minus a bit for descenders
       page.drawRectangle({
         x: textItem.x - 2,
-        y: pageHeight - textItem.y - textItem.height + 2,
+        y: originalPdfY - textItem.fontSize * 0.3,
         width: textItem.width + 4,
-        height: textItem.height + 4,
+        height: textItem.fontSize * 1.3,
         color: rgb(1, 1, 1),
       });
       
-      // Draw new text
+      // Draw new text at the original baseline position
       page.drawText(textItem.text, {
         x: textItem.x,
-        y: pageHeight - textItem.y,
+        y: originalPdfY,
         size: textItem.fontSize,
         font,
         color: rgb(0, 0, 0),
