@@ -588,7 +588,6 @@ const PdfEditorCanvas = ({ pdfBytes, pageCount, fileName }: PdfEditorCanvasProps
   //     setIsProcessing(false);
   //   }
   // };
-
 const handleDownload = async () => {
     setIsProcessing(true);
     try {
@@ -599,11 +598,11 @@ const handleDownload = async () => {
       // The function already handles covering original text with white rectangles
       const editedPdfBytes = await applyAnnotationsAndSave(
         pdfBytes,
-        annotations,
+        annotations, // Regular annotations (draw, shapes, etc)
         finalPageOrder,
         deletedPages,
         rotations,
-        editedItems.length > 0 ? editedItems : undefined
+        editedItems.length > 0 ? editedItems : undefined // Edited text items
       );
       downloadPdf(editedPdfBytes, `edited_${fileName}`);
       toast.success("PDF downloaded successfully!");
@@ -614,7 +613,6 @@ const handleDownload = async () => {
       setIsProcessing(false);
     }
   };
-      
       const allAnnotations = [...annotations, ...textCoverAnnotations];
       
       const editedPdfBytes = await applyAnnotationsAndSave(
