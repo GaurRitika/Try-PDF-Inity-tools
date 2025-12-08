@@ -23,6 +23,9 @@ Hey Guys , features are:
 9. Background Remover: https://pdf-inity.vercel.app/remove-background
 
 10. Pdf - Editor : https://pdf-inity.vercel.app/pdf-editor
+    <img width="1795" height="867" alt="image" src="https://github.com/user-attachments/assets/6d3bc693-5c17-40a4-b120-c5392ed91b81" />
+    edit your pdf guys...
+
 
 
 U can email me :
