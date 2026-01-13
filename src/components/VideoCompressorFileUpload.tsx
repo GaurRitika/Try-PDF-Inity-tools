@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 import { useDropzone } from "react-dropzone";
-import { Upload, Video, Trash2, Download, Loader2, Film, AlertCircle } from "lucide-react";
+import { Upload, Video, Trash2, Download, Loader2, Film, AlertCircle, Clock, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
 import { useToast } from "@/hooks/use-toast";
@@ -163,6 +163,22 @@ const VideoCompressorFileUpload = () => {
                   <p className="text-muted-foreground">
                     or click to browse • MP4, MOV, AVI, MKV, WebM • Max 500MB
                   </p>
+                  
+                  {/* Processing Time Warning */}
+                  <div className="mt-4 p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-left max-w-md">
+                    <div className="flex items-start gap-2">
+                      <Clock className="w-4 h-4 text-amber-500 flex-shrink-0 mt-0.5" />
+                      <div className="text-xs">
+                        <p className="font-medium text-amber-600 dark:text-amber-400">Processing Time Estimates</p>
+                        <ul className="text-muted-foreground mt-1 space-y-0.5">
+                          <li>• Small videos (under 50MB): 1-3 minutes</li>
+                          <li>• Medium videos (50-200MB): 3-10 minutes</li>
+                          <li>• Large videos (200-500MB): 10-20+ minutes</li>
+                        </ul>
+                        <p className="text-muted-foreground mt-1 italic">Times vary based on your device's processing power</p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <Button variant="outline" className="mt-4">
@@ -226,6 +242,21 @@ const VideoCompressorFileUpload = () => {
                         <span className="block text-xs text-primary mt-1">{option.reduction} reduction</span>
                       </button>
                     ))}
+                  </div>
+                  
+                  {/* Time Estimate Warning */}
+                  <div className="mt-4 p-3 rounded-xl bg-blue-500/10 border border-blue-500/30">
+                    <div className="flex items-start gap-2">
+                      <Info className="w-4 h-4 text-blue-500 flex-shrink-0 mt-0.5" />
+                      <div className="text-xs text-muted-foreground">
+                        <p><span className="font-medium text-blue-600 dark:text-blue-400">Estimated time:</span> {
+                          file.size < 50 * 1024 * 1024 ? '1-3 minutes' :
+                          file.size < 200 * 1024 * 1024 ? '3-10 minutes' :
+                          '10-20+ minutes'
+                        } for {formatFileSize(file.size)} video</p>
+                        <p className="mt-1">Processing happens entirely on your device for privacy. Larger files and older devices take longer.</p>
+                      </div>
+                    </div>
                   </div>
                 </div>
               )}
