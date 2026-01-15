@@ -1,8 +1,5 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { fetchFile } from '@ffmpeg/util';
-import coreURL from '@ffmpeg/core/dist/umd/ffmpeg-core.js?url';
-import wasmURL from '@ffmpeg/core/dist/umd/ffmpeg-core.wasm?url';
-import workerURL from '@ffmpeg/core/dist/umd/ffmpeg-core.worker.js?url';
+import { fetchFile, toBlobURL } from '@ffmpeg/util';
 import JSZip from 'jszip';
 
 let ffmpeg: FFmpeg | null = null;
@@ -106,11 +103,15 @@ const initFFmpeg = async (onProgress?: (progress: number) => void): Promise<FFmp
   });
 
   try {
-    // ffmpeg-core assets are bundled and served from the same origin by Vite (?url imports)
+    // Load FFmpeg core from CDN with proper CORS handling
+    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
+    
+    const coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript');
+    const wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm');
+
     await ffmpeg.load({
       coreURL,
       wasmURL,
-      workerURL,
     });
 
     console.log('FFmpeg loaded successfully');
