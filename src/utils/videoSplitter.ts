@@ -1,5 +1,7 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { fetchFile, toBlobURL } from '@ffmpeg/util';
+import { fetchFile } from '@ffmpeg/util';
+import coreURL from '@ffmpeg/core?url';
+import wasmURL from '@ffmpeg/core/wasm?url';
 import JSZip from 'jszip';
 
 let ffmpeg: FFmpeg | null = null;
@@ -103,12 +105,7 @@ const initFFmpeg = async (onProgress?: (progress: number) => void): Promise<FFmp
   });
 
   try {
-    // Load FFmpeg core from CDN with proper CORS handling
-    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
-    
-    const coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript');
-    const wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm');
-
+    // Load FFmpeg core from same-origin URLs (required for COEP/SharedArrayBuffer)
     await ffmpeg.load({
       coreURL,
       wasmURL,
