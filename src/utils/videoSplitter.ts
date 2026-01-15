@@ -1,5 +1,8 @@
 import { FFmpeg } from '@ffmpeg/ffmpeg';
-import { fetchFile, toBlobURL } from '@ffmpeg/util';
+import { fetchFile } from '@ffmpeg/util';
+import coreURL from '@ffmpeg/core/dist/umd/ffmpeg-core.js?url';
+import wasmURL from '@ffmpeg/core/dist/umd/ffmpeg-core.wasm?url';
+import workerURL from '@ffmpeg/core/dist/umd/ffmpeg-core.worker.js?url';
 import JSZip from 'jszip';
 
 let ffmpeg: FFmpeg | null = null;
@@ -103,24 +106,22 @@ const initFFmpeg = async (onProgress?: (progress: number) => void): Promise<FFmp
   });
 
   try {
-    // Try loading with single-threaded version (more compatible)
-    const baseURL = 'https://unpkg.com/@ffmpeg/core@0.12.6/dist/umd';
-    
-    const coreURL = await toBlobURL(`${baseURL}/ffmpeg-core.js`, 'text/javascript');
-    const wasmURL = await toBlobURL(`${baseURL}/ffmpeg-core.wasm`, 'application/wasm');
-    
+    // ffmpeg-core assets are bundled and served from the same origin by Vite (?url imports)
     await ffmpeg.load({
       coreURL,
       wasmURL,
+      workerURL,
     });
-    
+
     console.log('FFmpeg loaded successfully');
   } catch (error) {
     console.error('FFmpeg load error:', error);
     ffmpeg = null;
+
+    const isolated = typeof window !== 'undefined' ? (window as any).crossOriginIsolated : undefined;
     throw new Error(
-      'Failed to load video processing library. This may be due to browser restrictions. ' +
-      'Please try: 1) Using Chrome or Firefox, 2) Disabling browser extensions, 3) Refreshing the page.'
+      `Failed to load video processing library. (crossOriginIsolated: ${String(isolated)}) ` +
+        'Please refresh the page. If this keeps happening, the site may be missing COOP/COEP headers.'
     );
   }
   
